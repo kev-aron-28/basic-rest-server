@@ -1,0 +1,12 @@
+{
+  "name": "07-rest-server",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Kevin ",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2"
+  }
+}
