@@ -6,7 +6,8 @@ class Server {
     this.app = express();
     this.port = process.env.PORT;
     this.usersPath = '/api/users'
-    this.connectDB()
+    this.authPath = '/api/auth';
+    this.connectDB();
     // Middleware
     this.middleware();
     // Routes
@@ -14,7 +15,7 @@ class Server {
   }
 
 
-  async connectDB(){
+  async connectDB() {
     try {
       await dbConnection();
     } catch (error) {
@@ -24,6 +25,7 @@ class Server {
 
   routes() {
     this.app.use(this.usersPath, require('../routes/user'))
+    this.app.use(this.authPath, require('../routes/auth'))
   }
 
   middleware() {
