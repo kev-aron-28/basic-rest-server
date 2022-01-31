@@ -1,19 +1,18 @@
 const express = require("express");
 const cors = require("cors");
-const { dbConnection } = require('../database/config');
+const { dbConnection } = require("../database/config");
 class Server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT;
-    this.usersPath = '/api/users'
-    this.authPath = '/api/auth';
+    this.usersPath = "/api/users";
+    this.authPath = "/api/auth";
     this.connectDB();
     // Middleware
     this.middleware();
     // Routes
     this.routes();
   }
-
 
   async connectDB() {
     try {
@@ -24,19 +23,18 @@ class Server {
   }
 
   routes() {
-    this.app.use(this.usersPath, require('../routes/user'))
-    this.app.use(this.authPath, require('../routes/auth'))
+    this.app.use(this.usersPath, require("../routes/user"));
+    this.app.use(this.authPath, require("../routes/auth"));
   }
 
   middleware() {
     this.app.use(cors());
-    
+
     this.app.use(express.json());
     this.app.use(express.static("public"));
-
   }
 
-  listen() { 
+  listen() {
     this.app.listen(this.port, () => {
       console.log(`app in http://localhost:${this.port}/`);
     });
