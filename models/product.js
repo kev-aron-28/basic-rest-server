@@ -31,6 +31,9 @@ const ProductSchema = Schema({
     avaliable: {
         type: Boolean,
         default: true
+    },
+    img: {
+        type: String
     }
 });
 
